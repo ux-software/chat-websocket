@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Websocket</title>
+  </head>
+
+  <body>
+    <main id="container">
+      <div id="sidebar">
+        <div id="logo" class="box">
+          <a href="https://www.uxsoftware.com.br" target="_blank"
+            ><img src="assets/logoUx.svg" alt="logo" srcset=""
+          /></a>
+        </div>
+        <nav id="contacts" class="box">
+          <h3>Online <span class="num-online-contacts"></span></h3>
+          <ul id="online"></ul>
+        </nav>
+      </div>
+      <div id="chat">
+        <div class="message-container box" id="message-container"></div>
+        <div id="message-input-container" class="box">
+          <input id="message_input" type="text" placeholder="Digite sua mensagem..." />
+          <div id="button_submit">
+            <button><img src="assets/send.svg" alt="" srcset="" /></button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="https://www.uxsoftware.com.br" target="_blank"
+        ><img src="./assets/logouxsoftware.svg" alt="ux software"
+      /></a>
+    </footer>
+  </body>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"
+    integrity="sha512-WL6WGKMPBiM9PnHRYIn5YEtq0Z8XP4fkVb4qy7PP4vhmYQErJ/dySyXuFIMDf1eEYCXCrQrMJfkNwKc9gsjTjA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"
+    integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+</html>
