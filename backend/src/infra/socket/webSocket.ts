@@ -10,7 +10,7 @@ interface Message {
   text: string;
   room: string;
   create_at: Date;
-  userName: string;
+  username: string;
 }
 
 const users: Array<User> = [];
@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
       text: data.message,
       room: data.room,
       create_at: new Date(),
-      userName: data.userName,
+      username: data.username,
     };
 
     // Adicionando a mensagem ao array de mensagens

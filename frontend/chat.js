@@ -5,6 +5,56 @@ const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get("username");
 const room = urlParams.get("select-row");
 
+socket.emit("select_room", { username, room }, (dataResponse) => {
+  console.log(dataResponse)
+  dataResponse.messageRoom.forEach((message) => createMessage(message));
+  createUsersOnline(dataResponse.userRoom);
+});
+
+const createUsersOnline = (data) => {
+  const ulUser = document.getElementById("online");
+  ulUser.innerHTML = "";
+
+  data.forEach((user) => {
+    if (user.username != null) {
+      ulUser.innerHTML += `<li><a href="#">${user.username}</a></li>`;
+    }
+  });
+};
+
+const messageInput = document.getElementById("message_input")
+
+messageInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    emitMessage()
+  }
+})
+
+document.getElementById("button_submit").addEventListener("click", (event) => {
+  emitMessage()
+})
+
+const emitMessage = () => {
+  if (messageInput.value !== "") {
+    const message = messageInput.value;
+
+    const data = {
+      username,
+      room,
+      message
+    }
+
+    console.log(data)
+
+    socket.emit("message", data)
+    messageInput.value = ""
+  }
+}
+
+socket.on("message", (data) => {
+  createMessage(data)
+})
+
 const createMessage = (data) => {
   const MessageDiv = document.getElementById("message-container");
 
@@ -23,18 +73,4 @@ const createMessage = (data) => {
   }
 };
 
-const createUsersOnline = (data) => {
-  const ulUser = document.getElementById("online");
-  ulUser.innerHTML = "";
 
-  data.forEach((user) => {
-    if (user.username != null) {
-      ulUser.innerHTML += `<li><a href="#">${user.username}</a></li>`;
-    }
-  });
-};
-
-socket.emit("select_room", { username, room }, (dataResponse) => {
-  dataResponse.messageRoom.forEach((message) => createMessage(message));
-  createUsersOnline(dataResponse.userRoom);
-});
