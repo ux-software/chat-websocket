@@ -64,7 +64,15 @@ const createMessage = (data) => {
     <p>${data.text}</p>
     <span class="data">${dayjs(data.create_at).format("DD/MM HH:mm")}</span>
     </div>`;
-  } else {
+  } 
+  else if(data.status === 500){
+    MessageDiv.innerHTML += `<div class="error-message message">
+    <span class="name">${data.username}</span>
+    <p>${data.text}</p>
+    <span class="data">${dayjs(data.create_at).format("DD/MM HH:mm")}</span>
+    </div>`;
+  }
+  else {
     MessageDiv.innerHTML += `<div class="other-message message">
     <span class="name">${data.username}</span>
     <p>${data.text}</p>

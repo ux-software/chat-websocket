@@ -242,6 +242,16 @@ footer {
   margin-left: 20px;
 }
 
+.error-message {
+  text-align: left;
+  margin-right: auto;
+  background-color: #ededef;
+  color: red;
+  padding: 0px 10px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
 .other-message .name,
 .user-message .name {
   position: relative;
